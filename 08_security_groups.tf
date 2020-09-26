@@ -54,7 +54,7 @@ resource "aws_security_group" "cloud1_mysql_sg" {
   vpc_id      = aws_vpc.cloud1_vpc.id
 
   ingress {
-    description     = "MySQL input access"
+    description     = "MySQL input"
     from_port       = 3306
     to_port         = 3306
     protocol        = "tcp"
@@ -62,7 +62,32 @@ resource "aws_security_group" "cloud1_mysql_sg" {
   }
 
   egress {
-    description = "MySQL output access"
+    description = "MySQL output"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+##############
+#   ELB-SG   #
+##############
+
+resource "aws_security_group" "elb_sg" {
+  vpc_id = aws_vpc.cloud1_vpc.id
+  name   = "cloud1-elb"
+
+  ingress {
+    description = "Load balancer input"
+    from_port   = 80
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    description = "Load balancer output"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
