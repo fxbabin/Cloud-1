@@ -41,7 +41,7 @@ data "template_file" "wordpress_init" {
 
 resource "aws_launch_configuration" "wordpress_configuration" {
   depends_on = [
-    aws_internet_gateway.cloud1_igw,
+    aws_subnet.cloud1_public_subnet,
     aws_db_instance.mysql_wordpress
   ]
 

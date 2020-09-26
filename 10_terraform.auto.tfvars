@@ -29,7 +29,7 @@ rds_password   = "12341234"
 #   Auto-scaling group
 #########################
 
-server_instance_class = "db.t2.micro"
+server_instance_class = "t2.micro"
 key_name              = "ddd"
 asg_min_conf          = 2
 asg_max_conf          = 3
