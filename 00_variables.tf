@@ -15,3 +15,8 @@ variable "rds_identifier" {}
 variable "rds_db" {}
 variable "rds_user" {}
 variable "rds_password" {}
+
+variable "server_instance_class" {}
+variable "key_name" {}
+variable "asg_min_conf" {}
+variable "asg_max_conf" {}
