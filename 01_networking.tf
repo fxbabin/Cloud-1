@@ -114,9 +114,8 @@ resource "aws_route_table_association" "cloud1_public_rt_assoc" {
     aws_subnet.cloud1_public_subnet
   ]
 
-  count     = length(aws_subnet.cloud1_public_subnet)
-  subnet_id = aws_subnet.cloud1_public_subnet[count.index].id
-
+  count          = length(aws_subnet.cloud1_public_subnet)
+  subnet_id      = aws_subnet.cloud1_public_subnet[count.index].id
   route_table_id = aws_route_table.cloud1_public_rt.id
 }
 
@@ -126,8 +125,7 @@ resource "aws_route_table_association" "cloud1_private_rt_assoc" {
     aws_subnet.cloud1_private_subnet
   ]
 
-  count     = length(aws_subnet.cloud1_private_subnet)
-  subnet_id = aws_subnet.cloud1_private_subnet[count.index].id
-
+  count          = length(aws_subnet.cloud1_private_subnet)
+  subnet_id      = aws_subnet.cloud1_private_subnet[count.index].id
   route_table_id = aws_route_table.cloud1_private_rt.id
 }
